@@ -6,12 +6,12 @@ class UserBase(BaseModel):
     username: str = Field(min_length=1, max_length= 50)
     email: EmailStr = Field(max_length=120)
 
-
 class UserCreate(UserBase):
     pass
 
 class UserResponse(UserBase):
-    model_config = ConfigDict(from_attributes=True)
+    
+    model_config = ConfigDict(from_attributes=True) # SQLAlchemy ORM objects will be received, not dictionaries
 
     id: int
     image_file: str | None
